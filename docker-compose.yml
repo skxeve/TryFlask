@@ -1,0 +1,15 @@
+version: '3'
+services:
+    python37service:
+        restart: always
+        build: .
+        container_name: 'python37work'
+        working_dir: '/root/'
+        tty: true
+        volumes:
+            - .:/root/work
+            - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+        environment:
+            - "TZ=Asia/Tokyo"
+        ports:
+            - "8080:8080"
