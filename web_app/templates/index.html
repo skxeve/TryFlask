@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% if name %}
+<h1>こんにちは、{{ name }}</h1>
+{% endif %}
+
+{% if message %}
+<h2>{{ message }}</h2>
+{% endif %}
+
+<form action="/post" method="post">
+    <label for="name">名前</label>
+    <input type="text" name="name" placeholder="名前">
+    <button type="submit">送信する</button>
+</form>
+
+{% endblock %}
