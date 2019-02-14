@@ -1,5 +1,4 @@
 runtime: python37
-api_version: 1
 
 service: flaskpy
 
@@ -11,4 +10,4 @@ automatic_scaling:
 
 handlers:
     - url: /.*
-      script: main.app
+      script: auto
