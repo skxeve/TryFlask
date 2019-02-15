@@ -4,6 +4,7 @@ var_count = 999
 
 api = Blueprint('api_v1', __name__)
 
+
 @api.route('/hello')
 def hello():
     current_app.logger.info("called hello method, name={}".format(__name__))

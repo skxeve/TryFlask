@@ -11,9 +11,12 @@ app.register_blueprint(api, url_prefix='/api/v1')
 app.logger.info("main.py name={}".format(__name__))
 
 var_count = 1
+
+
 @app.route('/hello')
 def hello():
     return 'Hello Flask37 GAE! var_count=' + str(var_count)
+
 
 if __name__ == '__main__':
     var_count += 1
