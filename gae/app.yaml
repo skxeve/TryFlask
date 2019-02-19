@@ -1,6 +1,10 @@
 runtime: python37
-
 service: flaskpy
+
+includes:
+    - var.yaml
+# env_variables:
+#     QUEUE_NAME: ""
 
 instance_class: F1
 automatic_scaling:

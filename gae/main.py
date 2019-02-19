@@ -2,11 +2,13 @@ from flask import Flask
 import logging
 from top import top
 from api import api
+from task import task
 
 app = Flask(__name__)
 app.logger.setLevel(logging.DEBUG)
 app.register_blueprint(top)
 app.register_blueprint(api, url_prefix='/api/v1')
+app.register_blueprint(task, url_prefix='/task/v1')
 
 app.logger.info("main.py name={}".format(__name__))
 
