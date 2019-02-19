@@ -1,5 +1,6 @@
 from flask import Blueprint, current_app, jsonify, Flask, make_response
 from time import sleep
+import os
 
 var_count = 999
 
@@ -17,6 +18,7 @@ def hello():
 
 @api.route('/sleep/<int:sec>')
 def sleep_logging(sec):
+    current_app.logger.warning("api sleep_logging called, sec={}".format(sec))
     if sec > 120:
         per = 10
     elif sec > 50:
@@ -30,6 +32,21 @@ def sleep_logging(sec):
     result = {
         "result": True,
         "sec": sec,
+    }
+    current_app.logger.info("api sleep_logging finished, result={}".format(result))
+    return make_response(jsonify(result))
+
+
+@api.route('/env/list')
+def env_list():
+    data = {}
+    count = 0
+    for key, value in os.environ.items():
+        data[key] = value
+        count += 1
+    result = {
+        "data": data,
+        "count": count,
     }
     return make_response(jsonify(result))
 
